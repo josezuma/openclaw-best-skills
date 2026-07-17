@@ -1,16 +1,16 @@
 # OpenClaw Best Skills
 
-Una curaduría de las mejores **skills** para [OpenClaw](https://openclaw.nousresearch.com) — el agente AI autónomo que corre localmente en tu máquina.
+A curated list of the best **skills** for [OpenClaw](https://openclaw.nousresearch.com) — the autonomous AI agent that runs locally on your machine.
 
-Este repo te ayuda a arrancar rápido: cada skill resuelve un problema real, y todas están probadas en la comunidad.
+This repo helps you get started fast: each skill solves a real problem, and they're all community-tested.
 
 ---
 
-## Tabla de Contenidos
+## Table of Contents
 
-- [¿Qué es una skill en OpenClaw?](#qué-es-una-skill-en-openclaw)
-- [Cómo instalar una skill](#cómo-instalar-una-skill)
-- [Skills por categoría](#skills-por-categoría)
+- [What is a skill in OpenClaw?](#what-is-a-skill-in-openclaw)
+- [How to install a skill](#how-to-install-a-skill)
+- [Skills by category](#skills-by-category)
   - [Coding & Software Development](#coding--software-development)
   - [Git & GitHub](#git--github)
   - [Web & Frontend](#web--frontend)
@@ -24,296 +24,296 @@ Este repo te ayuda a arrancar rápido: cada skill resuelve un problema real, y t
   - [Notes & PKM](#notes--pkm)
   - [Image & Video Generation](#image--video-generation)
   - [PDF & Documents](#pdf--documents)
-- [Skills esenciales para empezar](#skills-esenciales-para-empezar)
-- [Dónde encontrar más skills](#dónde-encontrar-más-skills)
-- [Contribuir](#contribuir)
+- [Essential skills to start](#essential-skills-to-start)
+- [Where to find more skills](#where-to-find-more-skills)
+- [Contributing](#contributing)
 
 ---
 
-## ¿Qué es una skill en OpenClaw?
+## What is a skill in OpenClaw?
 
-Una **skill** en OpenClaw es un archivo markdown — o un directorio con múltiples archivos — que le enseña al agente cómo hacer algo específico. Piensa en ello como un "plug-and-play" para capacidades:
+A **skill** in OpenClaw is a markdown file — or a directory with multiple files — that teaches the agent how to do something specific. Think of it as "plug-and-play" for capabilities:
 
-- Le decís a OpenClaw _"usá la skill `plan`"_ y automáticamente sabe estructurar planes de acción.
-- Le decís _"cargá `test-driven-development`"_ y aplica TDD sin que le expliques el ciclo RED-GREEN-REFACTOR.
+- You tell OpenClaw _"use the `plan` skill"_ and it automatically knows how to structure action plans.
+- You say _"load `test-driven-development`"_ and it applies TDD without you explaining the RED-GREEN-REFACTOR cycle.
 
-Las skills son el mecanismo principal de extensibilidad de OpenClaw. Viven en `~/.openclaw/skills/` y se instalan desde [ClawHub](https://clawhub.ai), el registro público oficial, o desde repositorios individuales.
+Skills are OpenClaw's main extensibility mechanism. They live in `~/.openclaw/skills/` and are installed from [ClawHub](https://clawhub.ai), the official public registry, or from individual repositories.
 
-OpenClaw es el **fork autónomo** de Hermes Agent: mismo ADN de código abierto, mismo concepto de skills, pero operado como un agente CLI completamente independiente con su propio ecosistema, registro y comunidad.
+OpenClaw is the **autonomous fork** of Hermes Agent: same open-source DNA, same skill concept, but operated as a fully independent CLI agent with its own ecosystem, registry, and community.
 
 ---
 
-## Cómo instalar una skill
+## How to install a skill
 
 ```bash
-# 1. Clonar este repo (o descargar skills individuales)
+# 1. Clone this repo (or download individual skills)
 git clone https://github.com/josezuma/openclaw-best-skills.git
 cd openclaw-best-skills
 
-# 2. Instalar desde ClawHub (recomendado)
+# 2. Install from ClawHub (recommended)
 openclaw skills install <skill-slug>
 
-# 3. O usar ClawHub CLI
+# 3. Or use ClawHub CLI
 npx clawhub install <skill-slug>
 
-# 4. Instalación manual: copiar la skill a tu directorio de skills
-cp -r skills/<nombre> ~/.openclaw/skills/
+# 4. Manual installation: copy the skill to your skills directory
+cp -r skills/<name> ~/.openclaw/skills/
 ```
 
-Para cargar una skill en una sesión, OpenClaw la detecta automáticamente por su nombre. Si necesitás ver su contenido:
+To load a skill in a session, OpenClaw detects it automatically by name. If you need to view its content:
 
 ```bash
-cat ~/.openclaw/skills/<nombre>/SKILL.md
+cat ~/.openclaw/skills/<name>/SKILL.md
 ```
 
 ---
 
-## Skills por categoría
+## Skills by category
 
 ### Coding & Software Development
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [plan](https://clawhub.ai/voltagent/plan) | Escribe planes accionables en markdown. Tasks pequeñas, paths exactos, código completo. | Evita que el agente codee sin dirección. Úsala ANTES de escribir código. |
-| [test-driven-development](https://clawhub.ai/voltagent/tdd) | Ciclo RED-GREEN-REFACTOR forzado. Escribe tests antes del código. | Elimina falsos positivos. El agente no puede declarar "funciona" sin tests verdes. |
-| [systematic-debugging](https://clawhub.ai/voltagent/debug) | Debug de 4 fases: reproducir, aislar, entender, fix. | El agente no adivina. Sigue un proceso forense real. |
-| [spike](https://clawhub.ai/voltagent/spike) | Experimentos descartables para validar una idea antes de construir. | Ahorra horas construyendo la dirección equivocada. |
-| [code-review](https://clawhub.ai/voltagent/code-review) | Pre-commit review automático: security scan, quality gates, auto-fix. | Atrapa bugs, secretos, y code smells antes del push. |
-| [simplify-code](https://clawhub.ai/voltagent/simplify) | Refactorización multi-agente de código reciente. | Refactoring sin riesgo. Cada agente revisa el trabajo de los otros. |
-| [node-debug](https://clawhub.ai/voltagent/node-debug) | Debug Node.js con `--inspect` + DevTools Protocol desde el agente. | Cuando el stack trace no alcanza — inspeccionás variables en vivo. |
-| [python-debug](https://clawhub.ai/voltagent/python-debug) | Debug Python con pdb REPL + breakpoints remotos. | Lo mismo pero para Python. |
-| [code-indexer](https://clawhub.ai/voltagent/code-indexer) | Indexa el codebase y responde preguntas sobre arquitectura. | Para codebases grandes donde grep no alcanza. |
-| [agent-audit](https://clawskills.sh/skills/sharbelayy-agent-audit) | Audita tu setup de agente: performance, costo, ROI. | Saber si tu configuración está optimizada. |
+| [plan](https://clawhub.ai/voltagent/plan) | Writes actionable plans in markdown. Small tasks, exact paths, complete code. | Prevents the agent from coding without direction. Use it BEFORE writing code. |
+| [test-driven-development](https://clawhub.ai/voltagent/tdd) | Enforces RED-GREEN-REFACTOR cycle. Writes tests before code. | Eliminates false positives. The agent can't claim "it works" without green tests. |
+| [systematic-debugging](https://clawhub.ai/voltagent/debug) | 4-phase debugging: reproduce, isolate, understand, fix. | The agent doesn't guess. Follows a real forensic process. |
+| [spike](https://clawhub.ai/voltagent/spike) | Throwaway experiments to validate an idea before building. | Saves hours building in the wrong direction. |
+| [code-review](https://clawhub.ai/voltagent/code-review) | Automated pre-commit review: security scan, quality gates, auto-fix. | Catches bugs, secrets, and code smells before push. |
+| [simplify-code](https://clawhub.ai/voltagent/simplify) | Multi-agent refactoring of recent code. | Safe refactoring. Each agent reviews the others' work. |
+| [node-debug](https://clawhub.ai/voltagent/node-debug) | Debug Node.js with `--inspect` + DevTools Protocol from the agent. | When the stack trace isn't enough — inspect live variables. |
+| [python-debug](https://clawhub.ai/voltagent/python-debug) | Debug Python with pdb REPL + remote breakpoints. | Same but for Python. |
+| [code-indexer](https://clawhub.ai/voltagent/code-indexer) | Indexes the codebase and answers architecture questions. | For large codebases where grep isn't enough. |
+| [agent-audit](https://clawskills.sh/skills/sharbelayy-agent-audit) | Audits your agent setup: performance, cost, ROI. | Know if your configuration is optimized. |
 
 ### Git & GitHub
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [github-auth](https://clawhub.ai/voltagent/github-auth) | Setup de autenticación: tokens, SSH, gh CLI login. | Lo primero que necesitás para cualquier operación GitHub. |
-| [pr-workflow](https://clawhub.ai/voltagent/pr-workflow) | Ciclo completo: branch, commit, open PR, CI, merge. | Sin esta skill el agente no sabe el orden correcto. |
-| [github-issues](https://clawhub.ai/voltagent/github-issues) | Crear, triage, etiquetar, asignar issues desde el agente. | Gestión de issues sin salir de la terminal. |
-| [auto-pr-merger](https://clawskills.sh/skills/autogame-17-auto-pr-merger) | Automatiza checkout, merge y push de PRs de GitHub. | Para merges automáticos cuando los checks pasan. |
-| [bitbucket-automation](https://clawskills.sh/skills/sohamganatra-bitbucket-automation) | Automatiza repos, PRs y pipelines de Bitbucket. | Alternativa a GitHub para equipos con Bitbucket. |
-| [gitops-deploy](https://clawhub.ai/voltagent/gitops) | Deploy por GitOps: push a rama = deploy automático. | Infraestructura declarativa desde el agente. |
-| [azure-devops](https://clawskills.sh/skills/pals-software-azure-devops) | Lista proyectos, repos, branches; crea PRs; checkea builds. | Para equipos en Azure DevOps. |
+| [github-auth](https://clawhub.ai/voltagent/github-auth) | Auth setup: tokens, SSH, gh CLI login. | The first thing you need for any GitHub operation. |
+| [pr-workflow](https://clawhub.ai/voltagent/pr-workflow) | Complete lifecycle: branch, commit, open PR, CI, merge. | Without this skill the agent doesn't know the correct order. |
+| [github-issues](https://clawhub.ai/voltagent/github-issues) | Create, triage, label, assign issues from the agent. | Issue management without leaving the terminal. |
+| [auto-pr-merger](https://clawskills.sh/skills/autogame-17-auto-pr-merger) | Automates checkout, merge, and push of GitHub PRs. | For automatic merges when checks pass. |
+| [bitbucket-automation](https://clawskills.sh/skills/sohamganatra-bitbucket-automation) | Automates repos, PRs, and pipelines on Bitbucket. | GitHub alternative for teams on Bitbucket. |
+| [gitops-deploy](https://clawhub.ai/voltagent/gitops) | GitOps deploy: push to branch = auto deploy. | Declarative infrastructure from the agent. |
+| [azure-devops](https://clawskills.sh/skills/pals-software-azure-devops) | Lists projects, repos, branches; creates PRs; checks builds. | For teams on Azure DevOps. |
 
 ### Web & Frontend
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [design-mockup](https://clawhub.ai/voltagent/design-mockup) | Mockups HTML descartables: 2-3 variantes para comparar. | Validar diseño visual en 5 minutos, no 2 horas. |
-| [architecture-diagram](https://clawhub.ai/voltagent/arch-diagram) | Diagramas SVG dark-mode de arquitectura como HTML. | Documentación técnica que se ve bien en docs. |
-| [svg-builder](https://clawhub.ai/voltagent/svg-builder) | Generación programática de SVGs desde el agente. | Gráficos vectoriales sin depender de herramientas externas. |
-| [react-component-gen](https://clawhub.ai/voltagent/react-component) | Genera componentes React con tests y stories. | Para equipos que usan React y quieren consistencia. |
-| [api-mock-server](https://clawhub.ai/voltagent/api-mock) | Levanta un mock server desde una spec OpenAPI. | Frontend sin esperar al backend. |
-| [agent-dashboard](https://clawskills.sh/skills/tahseen137-agent-dashboard) | Dashboard en tiempo real para OpenClaw. | Monitoreo visual de las operaciones del agente. |
+| [design-mockup](https://clawhub.ai/voltagent/design-mockup) | Throwaway HTML mockups: 2-3 variants to compare. | Validate visual design in 5 minutes, not 2 hours. |
+| [architecture-diagram](https://clawhub.ai/voltagent/arch-diagram) | Dark-mode SVG architecture diagrams as HTML. | Technical documentation that looks great in docs. |
+| [svg-builder](https://clawhub.ai/voltagent/svg-builder) | Programmatic SVG generation from the agent. | Vector graphics without external tools. |
+| [react-component-gen](https://clawhub.ai/voltagent/react-component) | Generates React components with tests and stories. | For teams using React who want consistency. |
+| [api-mock-server](https://clawhub.ai/voltagent/api-mock) | Spins up a mock server from an OpenAPI spec. | Frontend without waiting for the backend. |
+| [agent-dashboard](https://clawskills.sh/skills/tahseen137-agent-dashboard) | Real-time dashboard for OpenClaw. | Visual monitoring of agent operations. |
 
 ### DevOps & Cloud
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [docker-manager](https://clawhub.ai/voltagent/docker) | Gestiona contenedores, imágenes, volúmenes, redes. | Operaciones Docker desde el agente sin escribir comandos. |
-| [kubernetes](https://clawhub.ai/voltagent/kubernetes) | Gestiona pods, deployments, services en K8s. | Para equipos que corren en Kubernetes. |
-| [ci-pipeline](https://clawhub.ai/voltagent/ci-pipeline) | Configura y monitorea pipelines CI/CD. | Sin salir del agente para revisar builds. |
-| [terraform](https://clawhub.ai/voltagent/terraform) | Planifica y aplica infraestructura como código. | IaC gestionado por el agente. |
-| [agentic-devops](https://clawskills.sh/skills/tkuehnl-agentic-devops) | Toolkit DevOps completo: Docker, procesos, logs, health checks. | Producción-grade para agentes. |
-| [server-monitor](https://clawhub.ai/voltagent/server-monitor) | Monitorea CPU, RAM, disco, procesos en servidores. | Alertas y diagnóstico desde el agente. |
-| [nginx-config](https://clawhub.ai/voltagent/nginx) | Configura virtual hosts, SSL, reverse proxy. | Gestión de servidores web desde el agente. |
+| [docker-manager](https://clawhub.ai/voltagent/docker) | Manages containers, images, volumes, networks. | Docker operations from the agent without writing commands. |
+| [kubernetes](https://clawhub.ai/voltagent/kubernetes) | Manages pods, deployments, services on K8s. | For teams running Kubernetes. |
+| [ci-pipeline](https://clawhub.ai/voltagent/ci-pipeline) | Configures and monitors CI/CD pipelines. | Check builds without leaving the agent. |
+| [terraform](https://clawhub.ai/voltagent/terraform) | Plans and applies infrastructure as code. | IaC managed by the agent. |
+| [agentic-devops](https://clawskills.sh/skills/tkuehnl-agentic-devops) | Complete DevOps toolkit: Docker, processes, logs, health checks. | Production-grade for agents. |
+| [server-monitor](https://clawhub.ai/voltagent/server-monitor) | Monitors CPU, RAM, disk, processes on servers. | Alerts and diagnostics from the agent. |
+| [nginx-config](https://clawhub.ai/voltagent/nginx) | Configures virtual hosts, SSL, reverse proxy. | Web server management from the agent. |
 
 ### Browser & Automation
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [web-scraper](https://clawhub.ai/voltagent/web-scraper) | Scrapea sitios web con anti-bot y manejo de CAPTCHA. | Extraer datos estructurados de cualquier sitio. |
-| [form-filler](https://clawhub.ai/voltagent/form-filler) | Completa formularios web automáticamente. | Automatización de tareas repetitivas. |
-| [browser-test](https://clawhub.ai/voltagent/browser-test) | Ejecuta tests E2E en el navegador. | Testing de frontend sin configuración manual. |
-| [rss-watcher](https://clawhub.ai/voltagent/rss-watcher) | Monitorea feeds RSS/Atom y alerta sobre cambios. | Seguimiento de contenido sin redes sociales. |
-| [airtable-automation](https://clawskills.sh/skills/sohamganatra-airtable-automation) | Automatiza tareas en Airtable via MCP (Composio). | CRUD de bases de datos visuales desde el agente. |
-| [activecampaign](https://clawskills.sh/skills/kesslerio-activecampaign) | Integración con ActiveCampaign para CRM. | Gestión de leads y campañas. |
-| [calendar-automation](https://clawhub.ai/voltagent/calendar) | Lee y escribe en calendarios (Google Calendar, etc.). | Scheduling y organización desde el agente. |
+| [web-scraper](https://clawhub.ai/voltagent/web-scraper) | Scrapes websites with anti-bot and CAPTCHA handling. | Extract structured data from any site. |
+| [form-filler](https://clawhub.ai/voltagent/form-filler) | Fills web forms automatically. | Automate repetitive tasks. |
+| [browser-test](https://clawhub.ai/voltagent/browser-test) | Runs E2E tests in the browser. | Frontend testing without manual setup. |
+| [rss-watcher](https://clawhub.ai/voltagent/rss-watcher) | Monitors RSS/Atom feeds and alerts on changes. | Content tracking without social media. |
+| [airtable-automation](https://clawskills.sh/skills/sohamganatra-airtable-automation) | Automates Airtable tasks via MCP (Composio). | CRUD for visual databases from the agent. |
+| [activecampaign](https://clawskills.sh/skills/kesslerio-activecampaign) | ActiveCampaign CRM integration. | Lead and campaign management. |
+| [calendar-automation](https://clawhub.ai/voltagent/calendar) | Reads and writes calendars (Google Calendar, etc.). | Scheduling and organization from the agent. |
 
 ### Productivity & Tasks
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [todo-manager](https://clawhub.ai/voltagent/todo) | Gestiona listas de tareas con prioridades y deadlines. | Organización personal desde el agente. |
-| [daily-planner](https://clawskills.sh/skills/gpunter-agent-daily-planner) | Planificación diaria estructurada y tracking de ejecución. | Para arrancar cada día con un plan claro. |
-| [obsidian-vault](https://clawhub.ai/voltagent/obsidian) | Lee, busca, crea y edita notas en Obsidian. | El agente accede a tu base de conocimiento personal. |
-| [notion-manager](https://clawhub.ai/voltagent/notion) | API de Notion: pages, databases, markdown, Workers. | Integración directa con Notion. |
-| [apple-reminders](https://clawskills.sh/skills/nftechie-apple-health-skill) | Crea recordatorios en lenguaje natural en Apple Reminders. | Recordatorios nativos en macOS/iOS. |
-| [pdf-editor](https://clawhub.ai/voltagent/pdf-editor) | Edita texto, corrige typos, modifica títulos en PDFs. | Correcciones rápidas sin herramientas pesadas. |
-| [ocr-tool](https://clawhub.ai/voltagent/ocr) | Extrae texto de PDFs escaneados e imágenes. | Digitalización de documentos. |
-| [meeting-notes](https://clawhub.ai/voltagent/meeting-notes) | Toma notas estructuradas y genera resúmenes. | Para reuniones sin perder detalle. |
+| [todo-manager](https://clawhub.ai/voltagent/todo) | Manages task lists with priorities and deadlines. | Personal organization from the agent. |
+| [daily-planner](https://clawskills.sh/skills/gpunter-agent-daily-planner) | Structured daily planning and execution tracking. | Start each day with a clear plan. |
+| [obsidian-vault](https://clawhub.ai/voltagent/obsidian) | Reads, searches, creates, edits notes in Obsidian. | The agent accesses your personal knowledge base. |
+| [notion-manager](https://clawhub.ai/voltagent/notion) | Notion API: pages, databases, markdown, Workers. | Direct Notion integration. |
+| [apple-reminders](https://clawskills.sh/skills/nftechie-apple-health-skill) | Creates natural language reminders in Apple Reminders. | Native reminders on macOS/iOS. |
+| [pdf-editor](https://clawhub.ai/voltagent/pdf-editor) | Edits text, fixes typos, modifies titles in PDFs. | Quick fixes without heavy tools. |
+| [ocr-tool](https://clawhub.ai/voltagent/ocr) | Extracts text from scanned PDFs and images. | Document digitization. |
+| [meeting-notes](https://clawhub.ai/voltagent/meeting-notes) | Takes structured notes and generates summaries. | Meetings without missing details. |
 
 ### AI & LLMs
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [prompt-engineer](https://clawhub.ai/voltagent/prompt-engineer) | Optimiza prompts para cualquier LLM. | Mejora la calidad de las respuestas de cualquier modelo. |
-| [model-benchmark](https://clawhub.ai/voltagent/model-benchmark) | Corre benchmarks (MMLU, GSM8K, etc.) en modelos locales. | Evaluación objetiva de performance de modelos. |
-| [rag-pipeline](https://clawhub.ai/voltagent/rag) | Arma pipelines RAG con embeddings y búsqueda vectorial. | Contexto aumentado para respuestas más precisas. |
-| [fine-tune-prep](https://clawhub.ai/voltagent/fine-tune) | Prepara datasets para fine-tuning de LLMs. | Automatiza la curaduría de datos de entrenamiento. |
-| [obliteratus](https://clawhub.ai/voltagent/obliteratus) | Abliteración de LLMs: remover refusal patterns. | Para fine-tuning de modelos sin restricciones artificiales. |
-| [ollama-manager](https://clawhub.ai/voltagent/ollama) | Gestiona modelos en Ollama: pull, run, customiza. | Correr modelos localmente con un solo comando. |
-| [add-top-openrouter-models](https://clawskills.sh/skills/chunhualiao-add-top-openrouter-models) | Sincroniza modelos de OpenRouter en tu config. | Mantené tu configuración al día con los mejores modelos. |
+| [prompt-engineer](https://clawhub.ai/voltagent/prompt-engineer) | Optimizes prompts for any LLM. | Improves response quality from any model. |
+| [model-benchmark](https://clawhub.ai/voltagent/model-benchmark) | Runs benchmarks (MMLU, GSM8K, etc.) on local models. | Objective model performance evaluation. |
+| [rag-pipeline](https://clawhub.ai/voltagent/rag) | Builds RAG pipelines with embeddings and vector search. | Augmented context for more accurate responses. |
+| [fine-tune-prep](https://clawhub.ai/voltagent/fine-tune) | Prepares datasets for LLM fine-tuning. | Automates training data curation. |
+| [obliteratus](https://clawhub.ai/voltagent/obliteratus) | LLM abliteration: remove refusal patterns. | For fine-tuning models without artificial restrictions. |
+| [ollama-manager](https://clawhub.ai/voltagent/ollama) | Manages models in Ollama: pull, run, customize. | Run models locally with a single command. |
+| [add-top-openrouter-models](https://clawskills.sh/skills/chunhualiao-add-top-openrouter-models) | Syncs OpenRouter models in your config. | Keep your config up to date with the best models. |
 
 ### Search & Research
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [academic-search](https://clawhub.ai/voltagent/academic-search) | Busca papers en arXiv, Semantic Scholar, CrossRef. | Acceso directo a literatura académica. |
-| [deep-research](https://clawhub.ai/voltagent/deep-research) | Investigación autónoma multi-fuente con síntesis. | Cuando necesitás un research assistant completo. |
-| [web-search](https://clawskills.sh/skills/wd041216-bit-openclaw-free-web-search) | Búsqueda web privada con SearXNG + validación multi-fuente. | Sin APIs keys, sin tracking. |
-| [arxiv-collector](https://clawskills.sh/skills/xukp20-arxiv-search-collector) | Colecta papers de arXiv con filtros por categoría. | Para armar literature reviews sistemáticas. |
-| [analytics-dashboard](https://clawhub.ai/voltagent/analytics) | Consulta GA4, Search Console, Stripe y genera reports. | Business intelligence desde el agente. |
-| [aeo-analytics](https://clawskills.sh/skills/psyduckler-aeo-analytics-free) | Mide visibilidad en asistentes AI (Gemini, ChatGPT, Perplexity). | Saber si tu marca es citada por las AIs. |
-| [aeo-content](https://clawskills.sh/skills/psyduckler-aeo-content-free) | Crea contenido optimizado para ser citado por asistentes AI. | La skill hermana de AEO analytics. |
+| [academic-search](https://clawhub.ai/voltagent/academic-search) | Searches papers on arXiv, Semantic Scholar, CrossRef. | Direct access to academic literature. |
+| [deep-research](https://clawhub.ai/voltagent/deep-research) | Autonomous multi-source research with synthesis. | When you need a complete research assistant. |
+| [web-search](https://clawskills.sh/skills/wd041216-bit-openclaw-free-web-search) | Private web search with SearXNG + multi-source validation. | No API keys, no tracking. |
+| [arxiv-collector](https://clawskills.sh/skills/xukp20-arxiv-search-collector) | Collects arXiv papers with category filters. | Systematic literature reviews. |
+| [analytics-dashboard](https://clawhub.ai/voltagent/analytics) | Queries GA4, Search Console, Stripe and generates reports. | Business intelligence from the agent. |
+| [aeo-analytics](https://clawskills.sh/skills/psyduckler-aeo-analytics-free) | Measures visibility in AI assistants (Gemini, ChatGPT, Perplexity). | Know if your brand is cited by AIs. |
+| [aeo-content](https://clawskills.sh/skills/psyduckler-aeo-content-free) | Creates content optimized for AI assistant citations. | The sister skill to AEO analytics. |
 
 ### Marketing & Sales
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [lead-scraper](https://clawhub.ai/voltagent/lead-scraper) | Extrae leads de LinkedIn, Crunchbase, directorios web. | Prospección automatizada sin herramientas caras. |
-| [email-campaign](https://clawhub.ai/voltagent/email-campaign) | Arma secuencias de email marketing con personalización. | Outreach automatizado con templates inteligentes. |
-| [seo-audit](https://clawhub.ai/voltagent/seo-audit) | Audita SEO on-page, backlinks, velocidad, Core Web Vitals. | Diagnóstico completo de SEO técnico. |
-| [social-scheduler](https://clawhub.ai/voltagent/social-scheduler) | Programa posts en redes sociales. | Gestión de contenido multicanal. |
-| [ads-manager](https://clawskills.sh/skills/amekala-ads-manager-agent) | Gestiona campañas en Google Ads, Meta, LinkedIn. | Automatización de publicidad pagada. |
-| [abm-outbound](https://clawskills.sh/skills/dru-ca-abm-outbound) | Automatización ABM multi-canal desde URLs de LinkedIn. | Account-based marketing a escala. |
+| [lead-scraper](https://clawhub.ai/voltagent/lead-scraper) | Extracts leads from LinkedIn, Crunchbase, web directories. | Automated prospecting without expensive tools. |
+| [email-campaign](https://clawhub.ai/voltagent/email-campaign) | Builds email marketing sequences with personalization. | Automated outreach with intelligent templates. |
+| [seo-audit](https://clawhub.ai/voltagent/seo-audit) | Audits on-page SEO, backlinks, speed, Core Web Vitals. | Complete technical SEO diagnosis. |
+| [social-scheduler](https://clawhub.ai/voltagent/social-scheduler) | Schedules posts on social networks. | Multi-channel content management. |
+| [ads-manager](https://clawskills.sh/skills/amekala-ads-manager-agent) | Manages campaigns on Google Ads, Meta, LinkedIn. | Paid advertising automation. |
+| [abm-outbound](https://clawskills.sh/skills/dru-ca-abm-outbound) | Multi-channel ABM automation from LinkedIn URLs. | Account-based marketing at scale. |
 
 ### Communication
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [slack-bot](https://clawhub.ai/voltagent/slack) | Lee y envía mensajes en Slack desde el agente. | Comunicación con el equipo sin cambiar de contexto. |
-| [discord-bot](https://clawhub.ai/voltagent/discord) | Integración con Discord: mensajes, canales, roles. | Gestión de comunidades desde el agente. |
-| [email-agent](https://clawhub.ai/voltagent/email) | Cliente IMAP/SMTP completo desde el agente. | Para cuentas de email tradicionales. |
-| [telegram-bot](https://clawhub.ai/voltagent/telegram) | Envía y recibe mensajes en Telegram. | Notificaciones y comandos desde el agente. |
-| [agentmail](https://clawskills.sh/skills/synesthesia-wav-agentmail-integration) | Dale al agente su propia bandeja de entrada email. | El agente puede recibir y responder emails autónomamente. |
-| [x-twitter](https://clawskills.sh/skills/kriptoburak-xquik-x-twitter-scraper) | Cliente de X/Twitter: post, search, DM, media, API v2. | Gestión de Twitter/X desde terminal. |
+| [slack-bot](https://clawhub.ai/voltagent/slack) | Reads and sends Slack messages from the agent. | Team communication without context switching. |
+| [discord-bot](https://clawhub.ai/voltagent/discord) | Discord integration: messages, channels, roles. | Community management from the agent. |
+| [email-agent](https://clawhub.ai/voltagent/email) | Full IMAP/SMTP client from the agent. | For traditional email accounts. |
+| [telegram-bot](https://clawhub.ai/voltagent/telegram) | Sends and receives Telegram messages. | Notifications and commands from the agent. |
+| [agentmail](https://clawskills.sh/skills/synesthesia-wav-agentmail-integration) | Gives the agent its own email inbox. | The agent can send and receive emails autonomously. |
+| [x-twitter](https://clawskills.sh/skills/kriptoburak-xquik-x-twitter-scraper) | X/Twitter client: post, search, DM, media, v2 API. | Manage Twitter/X from terminal. |
 
 ### Notes & PKM
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [obsidian-vault](https://clawhub.ai/voltagent/obsidian) | Acceso completo al vault de Obsidian. | El agente lee/escribe tu base de conocimiento. |
-| [notion-manager](https://clawhub.ai/voltagent/notion) | Pages, databases, markdown, Workers de Notion. | Integración directa con el segundo cerebro. |
-| [apple-notes](https://clawskills.sh/skills/swancho-mac-notes-agent) | Integración con Apple Notes en macOS. | Notas nativas de Apple desde el agente. |
-| [2nd-brain](https://clawskills.sh/skills/coderaven-2nd-brain) | Base de conocimiento personal para personas, lugares, tech. | PKM ligero sin depender de una app específica. |
-| [drafts](https://clawskills.sh/skills/nerveband-drafts) | Gestiona notas en Drafts.app en macOS. | Para usuarios del ecosistema Drafts + macOS. |
+| [obsidian-vault](https://clawhub.ai/voltagent/obsidian) | Full access to your Obsidian vault. | The agent reads/writes your knowledge base. |
+| [notion-manager](https://clawhub.ai/voltagent/notion) | Pages, databases, markdown, Workers on Notion. | Direct integration with your second brain. |
+| [apple-notes](https://clawskills.sh/skills/swancho-mac-notes-agent) | Apple Notes integration on macOS. | Native Apple notes from the agent. |
+| [2nd-brain](https://clawskills.sh/skills/coderaven-2nd-brain) | Personal knowledge base for people, places, tech. | Lightweight PKM without a specific app. |
+| [drafts](https://clawskills.sh/skills/nerveband-drafts) | Manages notes in Drafts.app on macOS. | For Drafts + macOS ecosystem users. |
 
 ### Image & Video Generation
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [ai-image-gen](https://clawhub.ai/voltagent/image-gen) | Genera imágenes con Stable Diffusion, DALL-E, etc. | Creación visual desde el agente. |
-| [ai-video-gen](https://clawskills.sh/skills/rhanbourinajd-ai-video-gen) | Generación de video end-to-end desde texto. | Videos completos desde una descripción. |
-| [ascii-art](https://clawhub.ai/voltagent/ascii-art) | Genera arte ASCII: pyfiglet, image-to-ascii. | Banners y decoración en terminal. |
-| [canva-connect](https://clawskills.sh/skills/coolmanns-canva-connect) | Gestiona diseños, assets y folders en Canva. | Diseño gráfico desde el agente. |
-| [music-gen](https://clawskills.sh/skills/fspecii-ace-music) | Genera música con ACE-Step. | Composición musical desde el agente. |
+| [ai-image-gen](https://clawhub.ai/voltagent/image-gen) | Generates images with Stable Diffusion, DALL-E, etc. | Visual creation from the agent. |
+| [ai-video-gen](https://clawskills.sh/skills/rhanbourinajd-ai-video-gen) | End-to-end video generation from text. | Complete videos from a description. |
+| [ascii-art](https://clawhub.ai/voltagent/ascii-art) | Generates ASCII art: pyfiglet, image-to-ascii. | Banners and terminal decoration. |
+| [canva-connect](https://clawskills.sh/skills/coolmanns-canva-connect) | Manages designs, assets, and folders in Canva. | Graphic design from the agent. |
+| [music-gen](https://clawskills.sh/skills/fspecii-ace-music) | Generates music with ACE-Step. | Music composition from the agent. |
 
 ### PDF & Documents
 
-| Skill | Qué hace | Por qué usarla |
+| Skill | What it does | Why use it |
 |-------|----------|----------------|
-| [pdf-editor](https://clawhub.ai/voltagent/pdf-editor) | Edita texto, corrige typos, modifica títulos en PDFs. | Correcciones rápidas sin herramientas pesadas. |
-| [ocr-tool](https://clawhub.ai/voltagent/ocr) | Extrae texto de PDFs escaneados e imágenes. | Digitalización de documentos. |
-| [presentation-maker](https://clawhub.ai/voltagent/presentation) | Crea presentaciones .pptx con diseño profesional. | Generar decks automáticamente. |
-| [document-merger](https://clawhub.ai/voltagent/doc-merger) | Combina múltiples documentos en uno solo. | Unificación de reportes y documentación. |
+| [pdf-editor](https://clawhub.ai/voltagent/pdf-editor) | Edits text, fixes typos, modifies titles in PDFs. | Quick fixes without heavy tools. |
+| [ocr-tool](https://clawhub.ai/voltagent/ocr) | Extracts text from scanned PDFs and images. | Document digitization. |
+| [presentation-maker](https://clawhub.ai/voltagent/presentation) | Creates .pptx presentations with professional design. | Auto-generate slide decks. |
+| [document-merger](https://clawhub.ai/voltagent/doc-merger) | Combines multiple documents into one. | Report and documentation unification. |
 
 ---
 
-## Skills esenciales para empezar
+## Essential skills to start
 
-Si sos nuevo en OpenClaw, instalá estas 5 primero:
+If you're new to OpenClaw, install these 5 first:
 
 ```bash
-# 1. Planificar antes de codear
+# 1. Plan before coding
 openclaw skills install plan
 
-# 2. No codear sin tests
+# 2. Don't code without tests
 openclaw skills install test-driven-development
 
-# 3. Debuggear sistemáticamente
+# 3. Debug systematically
 openclaw skills install systematic-debugging
 
-# 4. GitHub sin errores de proceso
+# 4. GitHub without process errors
 openclaw skills install pr-workflow
 
-# 5. Búsqueda web privada
+# 5. Private web search
 openclaw skills install web-search
 ```
 
-Con estas 5 skills cubrís el 80% de los problemas diarios: planificar, codificar con calidad, debuggear, publicar en GitHub, e investigar.
+With these 5 skills you cover 80% of daily problems: planning, quality coding, debugging, publishing on GitHub, and researching.
 
-### Para developers avanzados
+### For advanced developers
 
 ```bash
-# Pila completa de productividad
+# Full productivity stack
 openclaw skills install todo-manager daily-planner docker-manager
 
-# Pila de AI/ML
+# AI/ML stack
 openclaw skills install ollama-manager prompt-engineer rag-pipeline
 
-# Pila de contenido
+# Content stack
 openclaw skills install seo-audit social-scheduler aeo-analytics
 ```
 
 ---
 
-## Dónde encontrar más skills
+## Where to find more skills
 
-OpenClaw tiene un ecosistema enorme de skills. Estos son los mejores lugares para explorar:
+OpenClaw has a massive skill ecosystem. Here are the best places to explore:
 
-| Fuente | Enlace | Skills |
+| Source | Link | Skills |
 |--------|--------|--------|
-| **ClawHub** (registro oficial) | [clawhub.ai](https://clawhub.ai) | 5,400+ skills publicadas |
-| **Awesome OpenClaw Skills** | [VoltAgent/awesome-openclaw-skills](https://github.com/VoltAgent/awesome-openclaw-skills) | 5,000+ filtradas y categorizadas |
-| **ClawSkills.sh** | [clawskills.sh](https://clawskills.sh) | Buscador visual de skills |
+| **ClawHub** (official registry) | [clawhub.ai](https://clawhub.ai) | 5,400+ published skills |
+| **Awesome OpenClaw Skills** | [VoltAgent/awesome-openclaw-skills](https://github.com/VoltAgent/awesome-openclaw-skills) | 5,000+ filtered and categorized |
+| **ClawSkills.sh** | [clawskills.sh](https://clawskills.sh) | Visual skill browser |
 
 ---
 
-## Cómo crear tu propia skill
+## How to create your own skill
 
-Las skills de OpenClaw siguen el mismo formato que las de Hermes Agent. Usá estas guías:
+OpenClaw skills follow the same format as Hermes Agent skills. Use these guidelines:
 
-1. **Frontmatter** obligatorio: `name`, `description`, `category`
-2. **Estructura**: trigger conditions, numbered steps, verification
-3. **Pitfalls**: errores comunes que ya conocemos
-4. **Instrucciones claras**: cada paso debe ser ejecutable, no descriptivo
+1. **Required frontmatter**: `name`, `description`, `category`
+2. **Structure**: trigger conditions, numbered steps, verification
+3. **Pitfalls**: common mistakes we already know about
+4. **Clear instructions**: each step must be executable, not descriptive
 
-Reglas de oro:
-- Mínimo 2000 caracteres de contenido útil
-- Cada paso debe ser ejecutable, no descriptivo
-- Incluir sección de verificación (¿cómo sé que funcionó?)
-- Documentar pitfalls para que otros no pierdan tiempo
+Golden rules:
+- Minimum 2000 characters of useful content
+- Each step must be executable, not descriptive
+- Include a verification section (how do I know it worked?)
+- Document pitfalls so others don't waste time
 
-Para publicar tu skill en ClawHub:
+To publish your skill on ClawHub:
 ```bash
-# Sigue la guía oficial de publicación en
+# Follow the official publishing guide at
 # https://clawhub.ai/docs/publish
 ```
 
 ---
 
-## Contribuir
+## Contributing
 
-1. Forkeá el repo
-2. Agregá tu skill recomendada en la categoría correspondiente en la tabla del README
-3. Incluí el enlace a ClawHub o al repo de la skill
-4. Abrí un PR
+1. Fork the repo
+2. Add your recommended skill in the corresponding category table in the README
+3. Include the link to ClawHub or the skill's repo
+4. Open a PR
 
-**Criterios de aceptación:**
-- La skill debe estar publicada en [ClawHub](https://clawhub.ai) o tener un repo público
-- Debe resolver un problema real y estar probada
-- Descripción clara de "Qué hace" y "Por qué usarla"
-- Skills en español e inglés son bienvenidas (priorizamos español para la comunidad hispanohablante)
-
----
-
-## Licencia
-
-MIT — hacé lo que quieras con esto.
+**Acceptance criteria:**
+- The skill must be published on [ClawHub](https://clawhub.ai) or have a public repo
+- It must solve a real problem and be proven
+- Clear description of "What it does" and "Why use it"
+- Skills in English and Spanish are welcome
 
 ---
 
-_Creado por [José Zuma](https://github.com/josezuma) para la comunidad de OpenClaw en español._
+## License
+
+MIT — do whatever you want with this.
+
+---
+
+_Created by [José Zuma](https://github.com/josezuma) for the global OpenClaw community._
