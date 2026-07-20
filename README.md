@@ -46,17 +46,15 @@ OpenClaw is the **autonomous fork** of Hermes Agent: same open-source DNA, same 
 ## How to install a skill
 
 ```bash
-# 1. Clone this repo (or download individual skills)
-git clone https://github.com/josezuma/openclaw-best-skills.git
-cd openclaw-best-skills
-
-# 2. Install from ClawHub (recommended)
+# 1. Install from ClawHub (recommended)
 openclaw skills install <skill-slug>
 
-# 3. Or use ClawHub CLI
+# 2. Or use ClawHub CLI
 npx clawhub install <skill-slug>
 
-# 4. Manual installation: copy the skill to your skills directory
+# 3. Clone this repo (or download individual skills)
+git clone https://github.com/josezuma/openclaw-best-skills.git
+cd openclaw-best-skills
 cp -r skills/<name> ~/.openclaw/skills/
 ```
 
