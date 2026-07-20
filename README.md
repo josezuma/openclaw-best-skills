@@ -304,7 +304,7 @@ To publish your skill on ClawHub:
 - The skill must be published on [ClawHub](https://clawhub.ai) or have a public repo
 - It must solve a real problem and be proven
 - Clear description of "What it does" and "Why use it"
-- Skills in English and Spanish are welcome
+- Skills in all languages are welcome
 
 ---
 
